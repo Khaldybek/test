@@ -37,12 +37,10 @@ export function CoupleNamesHero({
 
         <div className="relative z-10">
           <p
-            className={`font-names font-semibold italic leading-[1.12] tracking-wide ${nameClass} ${
-              isOverlay ? "bet-ashar-hero__name" : "text-black"
-            }`}
           >
             {groom}
           </p>
+          <p className="font-names my-2 text-3xl font-normal not-italic text-accent">&</p>
           <p
             className={`font-names my-2 text-3xl font-medium not-italic ${
               isOverlay ? "bet-ashar-hero__amp" : "text-black"
