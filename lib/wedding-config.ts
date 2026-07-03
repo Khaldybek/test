@@ -45,7 +45,7 @@ export const BET_ASHAR: WeddingEvent = {
   musicStartAt: 16,
   hosts: {
     label: "Той иелері",
-    names: ["Сейіт — Айсұлу", "Берекет — Света"],
+    names: ["(Сейіт) — Айсұлу", "Берекет — Света"],
   },
 }
 
