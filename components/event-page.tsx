@@ -96,8 +96,10 @@ export function EventPage({ event }: { event: WeddingEvent }) {
             <MapPin className="h-5 w-5 shrink-0 text-accent" />
             <div>
               <p className="text-xs uppercase tracking-wide text-muted-foreground">{EVENT_LABELS.venue}</p>
-              <p className="text-sm font-medium text-foreground">{event.venue}</p>
-              <p className="text-sm text-muted-foreground">{event.address}</p>
+              {event.venue && <p className="text-sm font-medium text-foreground">{event.venue}</p>}
+              <p className={`text-sm ${event.venue ? "text-muted-foreground" : "font-medium text-foreground"}`}>
+                {event.address}
+              </p>
             </div>
           </div>
           {event.dressCode && (

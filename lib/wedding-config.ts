@@ -19,7 +19,7 @@ export type WeddingEvent = {
   date: string // формат: ГГГГ-ММ-ДДTЧЧ:ММ:СС (для таймера)
   dateLabel: string
   timeLabel: string
-  venue: string
+  venue?: string
   address: string
   mapUrl: string
   rsvpSheetId: string
@@ -38,8 +38,7 @@ export const BET_ASHAR: WeddingEvent = {
   date: "2026-07-08T12:00:00",
   dateLabel: "8 шілде 2026 ж.",
   timeLabel: "12:00",
-  venue: "Күйеу үйі",
-  address: "Алматы қ., Самал-2 ш/а, 10 үй",
+  address: "Мұнайлы ауданы, 19-й квартал, 2/6",
   mapUrl: "https://2gis.kz/almaty",
   rsvpSheetId: "1vzU1L_LqxuNDiRtktQG0m9Sc-FDF_YFykPHLwhjpMTY",
   musicSrc: "/music/betashar.m4a",
@@ -59,8 +58,8 @@ export const TOI_BANKET: WeddingEvent = {
   date: "2026-07-10T18:00:00",
   dateLabel: "10 шілде 2026 ж.",
   timeLabel: "18:00",
-  venue: '"Алтын Орда" мейрамханасы',
-  address: "Алматы қ., Әл-Фараби даңғылы, 77",
+  venue: "Әмре hall",
+  address: "Промышленная зона 6, 7/9",
   mapUrl: "https://2gis.kz/almaty",
   rsvpSheetId: "1JGRzvVwfldOpTy5z9yhus1tUN8KhTlO4Zwh-Cvz6QJQ",
   musicSrc: "/music/bet.m4a",

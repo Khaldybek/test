@@ -26,7 +26,7 @@ function EventLinkCard({ event }: { event: WeddingEvent }) {
         </p>
         <p className="mt-0.5 flex items-center gap-1.5 truncate text-xs text-muted-foreground">
           <MapPin className="h-3.5 w-3.5 shrink-0" />
-          {event.venue}
+          {event.venue || event.address}
         </p>
       </div>
       <ChevronRight className="h-5 w-5 shrink-0 text-accent transition-transform group-hover:translate-x-1" />
