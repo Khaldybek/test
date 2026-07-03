@@ -1,16 +1,25 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Lora, Manrope } from 'next/font/google'
+import { Cormorant_Garamond, Montserrat, Playfair_Display } from 'next/font/google'
 import './globals.css'
 
-const lora = Lora({
+const cormorant = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
-  variable: '--font-lora',
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-cormorant',
 })
 
-const manrope = Manrope({
+const montserrat = Montserrat({
   subsets: ['latin', 'cyrillic', 'cyrillic-ext'],
-  variable: '--font-manrope',
+  weight: ['400', '500', '600'],
+  variable: '--font-montserrat',
+})
+
+const playfair = Playfair_Display({
+  subsets: ['latin', 'cyrillic'],
+  weight: ['400', '500', '600', '700'],
+  style: ['italic', 'normal'],
+  variable: '--font-playfair',
 })
 
 export const metadata: Metadata = {
@@ -35,7 +44,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="kk" className={`bg-background ${lora.variable} ${manrope.variable}`}>
+    <html lang="kk" className={`bg-background ${cormorant.variable} ${montserrat.variable} ${playfair.variable}`}>
       <body className="antialiased font-sans">
         <div className="mx-auto min-h-dvh w-full max-w-[430px] overflow-x-hidden">
           {children}

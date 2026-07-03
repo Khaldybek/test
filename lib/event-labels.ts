@@ -36,3 +36,14 @@ export const RSVP_LABELS = {
   successNo: "Жауабыңыз қабылданды. Сізді сағынып қалады, жылы сөздеріңізге рахмет!",
   errorSubmit: "Жіберу сәтсіз аяқталды",
 } as const
+
+export const BANKET_LABELS = {
+  rsvpRequest: "Тойға келуіңізді растауыңызды сұраймыз",
+  dearGuests: "Құрметті",
+  countdownTitle: "Той салтанатына дейін",
+  venueTitle: "Мекен-жайымыз",
+  surveyTitle: "Сауалнама",
+  nameHint:
+    "аты-жөніңіз (жұбайыңызбен келетін болсаңыз, екеуіңіздің де атыңызды жазуыңызды өтінеміз)",
+  footerGuest: "Қадірлі қонағымыз болыңыздар!",
+} as const

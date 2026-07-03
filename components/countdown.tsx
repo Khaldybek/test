@@ -36,9 +36,9 @@ export function Countdown({ targetDate }: { targetDate: string }) {
       {(Object.keys(LABELS) as (keyof TimeLeft)[]).map((key) => (
         <div
           key={key}
-          className="flex flex-col items-center rounded-lg border border-accent/40 bg-card px-2 py-3"
+          className="flex flex-col items-center rounded-xl border border-white/70 bg-[rgba(255,251,245,0.92)] px-2 py-4 backdrop-blur-md"
         >
-          <span className="font-serif text-2xl font-semibold text-primary tabular-nums">
+          <span className="font-serif text-2xl font-semibold text-primary tabular-nums tracking-wide">
             {time ? String(time[key]).padStart(2, "0") : "--"}
           </span>
           <span className="mt-1 text-[11px] uppercase tracking-wide text-muted-foreground">
