@@ -43,9 +43,9 @@ export const BET_ASHAR: WeddingEvent = {
   backgroundPosition: "22% center",
   description:
     "Құрметті ағайын-туыс, құда-жекжат, қадірлі достар! Сіздерді шаңырағымыздың шаттығын еселейтін, ұлттық дәстүріміздің көркі саналатын беташар салтанатымыздың қадірлі қонағы болуға шын жүректен шақырамыз. Қуанышымызға ортақ болып, ақ баталарыңызды арнап, осы ерекше күніміздің куәсі болыңыздар. Сіздерді зор ықыласпен күтеміз!",
-  date: "2026-07-08T12:00:00",
+  date: "2026-07-08T11:00:00",
   dateLabel: "8 шілде 2026 ж.",
-  timeLabel: "12:00",
+  timeLabel: "11:00",
   address: "Мұнайлы ауданы, 19-й квартал, 2/6",
   mapUrl: "https://2gis.kz/almaty",
   rsvpSheetId: "1vzU1L_LqxuNDiRtktQG0m9Sc-FDF_YFykPHLwhjpMTY",
@@ -84,6 +84,6 @@ export const TOI_BANKET: WeddingEvent = {
   },
 }
 
-export const MUSIC_SRC = "/music/song.mp3"
+export const MUSIC_SRC = "/music/betashar.m4a"
 
 export const HOME_BACKGROUND = "/images/bg-home.png"

@@ -5,6 +5,7 @@ module.exports = {
       cwd: "/home/ubuntu/test/test",
       script: "node_modules/next/dist/bin/next",
       args: "start -p 3011",
+      exec_mode: "fork",
       instances: 1,
       autorestart: true,
       watch: false,

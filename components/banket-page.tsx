@@ -43,20 +43,20 @@ export function BanketPage() {
         </nav>
 
         <FadeIn className="mt-10 text-center">
-          <div className="bet-ashar-hero relative -mx-5 w-[calc(100%+2.5rem)]">
+          <div className="bet-ashar-hero bet-ashar-hero--banket relative -mx-5 w-[calc(100%+2.5rem)]">
             <img
               src={event.heroImage ?? "/images/bg-banket-hero.png"}
               alt=""
-              width={576}
+              width={527}
               height={1024}
-              className="bet-ashar-hero__photo block w-full"
+              className="bet-ashar-hero__photo bet-ashar-hero__photo--couple block w-full"
             />
             <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 py-8 text-center">
               <CoupleNamesHero groom={COUPLE.groom} bride={COUPLE.bride} withOrnament variant="overlay" />
               <p className="bet-ashar-hero__title heading-display mt-4 font-serif text-xl tracking-[0.25em]">
                 {formatDateDots(event.date)}
               </p>
-              <p className="bet-ashar-hero__subtitle mt-2 text-sm font-semibold tracking-[0.14em] text-pretty">
+              <p className="bet-ashar-hero__subtitle bet-ashar-hero__subtitle--banket mt-3 font-semibold tracking-[0.12em] text-pretty">
                 {event.subtitle}
               </p>
               <OrnamentDivider className="mt-6" />

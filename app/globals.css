@@ -318,4 +318,31 @@
     height: auto;
     filter: blur(2.5px) brightness(0.92);
   }
+
+  .bet-ashar-hero__photo--couple {
+    min-height: 22rem;
+    max-height: 70vh;
+    object-fit: cover;
+    object-position: center 35%;
+    filter: brightness(0.9);
+  }
+
+  .bet-ashar-hero--banket::after {
+    background: radial-gradient(
+      ellipse 90% 65% at 50% 48%,
+      rgba(255, 251, 245, 0.38) 0%,
+      rgba(255, 251, 245, 0.16) 42%,
+      transparent 72%
+    );
+  }
+
+  .bet-ashar-hero--banket .bet-ashar-hero__photo--couple {
+    filter: brightness(0.97);
+  }
+
+  .bet-ashar-hero__subtitle--banket {
+    font-size: 1.375rem;
+    line-height: 1.35;
+    letter-spacing: 0.1em;
+  }
 }
