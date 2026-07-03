@@ -147,7 +147,7 @@ export function MusicButton({
         type="button"
         onClick={toggle}
         aria-label={playing ? offLabel : onLabel}
-        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-accent/50 bg-card/90 text-primary shadow-lg backdrop-blur transition-transform active:scale-95"
+        className="fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-full border border-white/60 bg-card/90 text-primary shadow-lg backdrop-blur-md transition-transform active:scale-95"
       >
         {playing ? <Volume2 className="h-5 w-5" /> : <VolumeX className="h-5 w-5" />}
       </button>

@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react"
 import confetti from "canvas-confetti"
 import { RSVP_LABELS } from "@/lib/event-labels"
+import { OrnamentDivider } from "@/components/ornament-divider"
 
 type RsvpFormProps = {
   eventTitle: string
@@ -62,13 +63,9 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
 
   if (submitted) {
     return (
-      <div className="rounded-xl border border-accent/40 bg-card p-8 text-center animate-in fade-in zoom-in-95 duration-700">
-        <img
-          src="/images/ornament-divider.png"
-          alt=""
-          className="mx-auto mb-4 h-8 w-auto object-contain opacity-80"
-        />
-        <h3 className="font-serif text-2xl text-primary">{RSVP_LABELS.thanks}</h3>
+      <div className="soft-panel p-8 text-center animate-in fade-in zoom-in-95 duration-700">
+        <OrnamentDivider className="mb-5" />
+        <h3 className="font-serif text-2xl font-medium tracking-wide text-primary">{RSVP_LABELS.thanks}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
           {attending === "yes" ? RSVP_LABELS.successYes : RSVP_LABELS.successNo}
         </p>
@@ -77,7 +74,7 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 rounded-xl border border-accent/40 bg-card p-5">
+    <form onSubmit={handleSubmit} className="soft-panel flex flex-col gap-4 p-6">
       <div className="flex flex-col gap-1.5">
         <label htmlFor={`name-${eventTitle}`} className="text-sm font-medium text-foreground">
           {RSVP_LABELS.name}
@@ -90,7 +87,7 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
           onChange={(e) => setName(e.target.value)}
           placeholder={RSVP_LABELS.namePlaceholder}
           disabled={loading}
-          className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
+          className="rounded-xl border border-input bg-white/60 px-3 py-2.5 text-sm tracking-wide text-foreground placeholder:text-muted-foreground backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
         />
       </div>
 
@@ -101,10 +98,10 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
             type="button"
             onClick={() => setAttending("yes")}
             aria-pressed={attending === "yes"}
-            className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
+            className={`rounded-xl border px-3 py-2.5 text-sm font-medium tracking-wide transition-colors ${
               attending === "yes"
                 ? "border-primary bg-primary text-primary-foreground"
-                : "border-input bg-background text-foreground"
+                : "border-input bg-white/60 text-foreground backdrop-blur-sm"
             }`}
           >
             {RSVP_LABELS.yes}
@@ -113,10 +110,10 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
             type="button"
             onClick={() => setAttending("no")}
             aria-pressed={attending === "no"}
-            className={`rounded-lg border px-3 py-2.5 text-sm font-medium transition-colors ${
+            className={`rounded-xl border px-3 py-2.5 text-sm font-medium tracking-wide transition-colors ${
               attending === "no"
                 ? "border-primary bg-primary text-primary-foreground"
-                : "border-input bg-background text-foreground"
+                : "border-input bg-white/60 text-foreground backdrop-blur-sm"
             }`}
           >
             {RSVP_LABELS.no}
@@ -137,7 +134,7 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
             value={guests}
             onChange={(e) => setGuests(Number(e.target.value))}
             disabled={loading}
-            className="rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
+            className="rounded-xl border border-input bg-white/60 px-3 py-2.5 text-sm tracking-wide text-foreground backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
           />
         </div>
       )}
@@ -154,7 +151,7 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
           onChange={(e) => setWish(e.target.value)}
           placeholder={RSVP_LABELS.wishPlaceholder}
           disabled={loading}
-          className="resize-none rounded-lg border border-input bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
+          className="resize-none rounded-xl border border-input bg-white/60 px-3 py-2.5 text-sm tracking-wide text-foreground placeholder:text-muted-foreground backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-ring disabled:opacity-60"
         />
       </div>
 
@@ -167,7 +164,7 @@ export function RsvpForm({ eventTitle, rsvpSheetId }: RsvpFormProps) {
       <button
         type="submit"
         disabled={!name.trim() || !attending || loading}
-        className="mt-1 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground transition-opacity disabled:opacity-50"
+        className="mt-1 rounded-xl bg-primary px-4 py-3.5 text-sm font-medium tracking-wide text-primary-foreground shadow-[0_4px_16px_rgba(92,24,34,0.2)] transition-opacity disabled:opacity-50"
       >
         {loading ? RSVP_LABELS.submitting : RSVP_LABELS.submit}
       </button>

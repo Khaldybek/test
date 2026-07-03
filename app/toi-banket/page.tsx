@@ -1,6 +1,5 @@
 import type { Metadata } from "next"
-import { EventPage } from "@/components/event-page"
-import { TOI_BANKET } from "@/lib/wedding-config"
+import { BanketPage } from "@/components/banket-page"
 
 export const metadata: Metadata = {
   title: "Той банкет — Қожанепес & Ақниет",
@@ -8,5 +7,5 @@ export const metadata: Metadata = {
 }
 
 export default function ToiBanketPage() {
-  return <EventPage event={TOI_BANKET} />
+  return <BanketPage />
 }
