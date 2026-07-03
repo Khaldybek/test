@@ -50,15 +50,17 @@ export function MusicButton({
 
   useEffect(() => {
     const audio = audioRef.current
-    if (!audio) return
+    if (!audio || startAtRef.current <= 0) return
 
     function handleTimeUpdate() {
-      seekToStart(audio)
+      if (audio.currentTime < startAtRef.current) {
+        audio.currentTime = startAtRef.current
+      }
     }
 
-    audio.addEventListener("timeupdate", handleTimeUpdate)
+    audio.addEventListener("timeupdate", handleTimeUpdate, { passive: true })
     return () => audio.removeEventListener("timeupdate", handleTimeUpdate)
-  }, [seekToStart])
+  }, [src])
 
   useEffect(() => {
     const audio = audioRef.current

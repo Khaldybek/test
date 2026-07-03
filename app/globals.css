@@ -68,11 +68,16 @@
 @keyframes soft-float {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
   50% {
-    transform: translateY(-8px);
+    transform: translate3d(0, -6px, 0);
   }
+}
+
+.opening-card {
+  animation: soft-float 5s ease-in-out infinite;
+  will-change: transform;
 }
 
 .fade-section {
@@ -195,6 +200,7 @@
 
   .page-bg {
     @apply pointer-events-none fixed inset-0 z-0 overflow-hidden;
+    contain: strict;
   }
 
   .page-bg__image {

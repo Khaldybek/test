@@ -74,6 +74,14 @@ export const TOI_BANKET: WeddingEvent = {
   mapUrl: "https://2gis.kz/almaty",
   rsvpSheetId: "1JGRzvVwfldOpTy5z9yhus1tUN8KhTlO4Zwh-Cvz6QJQ",
   musicSrc: "/music/bet.m4a",
+  hosts: {
+    label: "Той иелері",
+    names: ["(Сейіт) — Айсұлу", "Берекет — Света"],
+  },
+  program: {
+    label: "Той бағдарламасы",
+    items: [{ time: "18:00", title: "Үлкен той" }],
+  },
 }
 
 export const MUSIC_SRC = "/music/song.mp3"

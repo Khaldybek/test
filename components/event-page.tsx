@@ -6,6 +6,10 @@ import { FadeIn } from "@/components/fade-in"
 import { Countdown } from "@/components/countdown"
 import { RsvpForm } from "@/components/rsvp-form"
 import { MusicButton } from "@/components/music-button"
+import { PageBackground } from "@/components/page-background"
+import { OrnamentDivider } from "@/components/ornament-divider"
+import { CoupleNamesHero } from "@/components/couple-names-hero"
+import { WeddingCalendar } from "@/components/wedding-calendar"
 
 export function EventPage({ event }: { event: WeddingEvent }) {
   return (

@@ -44,10 +44,7 @@ export function InvitationHome() {
     return (
       <PageBackground src={HOME_BACKGROUND} position="center center">
         <main className="flex min-h-dvh flex-col items-center justify-center px-8 text-center">
-          <div
-            className="soft-panel flex w-full max-w-sm flex-col items-center px-8 py-12"
-            style={{ animation: "soft-float 4s ease-in-out infinite" }}
-          >
+          <div className="soft-panel opening-card flex w-full max-w-sm flex-col items-center px-8 py-12">
             <p className="section-label">Тойға шақырту</p>
             <CoupleNamesHero groom={COUPLE.groom} bride={COUPLE.bride} nameSize="lg" />
             <p className="mt-5 text-sm leading-relaxed tracking-wide text-muted-foreground">
