@@ -23,7 +23,7 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'Той жайлы шақыру — Айдар & Аружан',
+  title: 'Той жайлы шақыру — Ахат & Жансая',
   description:
     'Приглашение на свадебные торжества: Бет ашар и Той банкет. Ждём вас!',
   generator: 'v0.app',
