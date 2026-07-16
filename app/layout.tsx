@@ -46,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="kk" className={`bg-background ${cormorant.variable} ${montserrat.variable} ${playfair.variable}`}>
       <body className="antialiased font-sans">
-        <div className="mx-auto min-h-dvh w-full max-w-[430px] overflow-x-hidden">
+        <div className="mx-auto min-h-dvh w-full max-w-[460px] overflow-x-hidden bg-[#efe7d7]">
           {children}
         </div>
         {process.env.NODE_ENV === 'production' && <Analytics />}

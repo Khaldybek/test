@@ -1,155 +1,185 @@
-import Link from "next/link"
-import { MapPin } from "lucide-react"
-import { COUPLE, TOI_BANKET } from "@/lib/wedding-config"
-import { BANKET_LABELS, EVENT_LABELS } from "@/lib/event-labels"
-import { FadeIn } from "@/components/fade-in"
-import { Countdown } from "@/components/countdown"
-import { RsvpForm } from "@/components/rsvp-form"
-import { MusicButton } from "@/components/music-button"
-import { PageBackground } from "@/components/page-background"
-import { OrnamentDivider } from "@/components/ornament-divider"
-import { CoupleNamesHero } from "@/components/couple-names-hero"
-import { WeddingCalendar } from "@/components/wedding-calendar"
-import { EventProgram } from "@/components/event-program"
+"use client"
 
-function formatDateDots(dateIso: string) {
+import Link from "next/link"
+import { COUPLE, TOI_BANKET } from "@/lib/wedding-config"
+import { MusicButton } from "@/components/music-button"
+import { Template23Calendar } from "@/components/template23/calendar"
+import { Template23Countdown } from "@/components/template23/countdown"
+import { Template23Rsvp, scrollToRsvpWish } from "@/components/template23/rsvp"
+import "@/app/toi-banket/template23.css"
+
+const MONTHS_KK = [
+  "Қаңтар",
+  "Ақпан",
+  "Наурыз",
+  "Сәуір",
+  "Мамыр",
+  "Маусым",
+  "Шілде",
+  "Тамыз",
+  "Қыркүйек",
+  "Қазан",
+  "Қараша",
+  "Желтоқсан",
+] as const
+
+function formatInviteDate(dateIso: string) {
   const date = new Date(dateIso)
-  const day = String(date.getDate()).padStart(2, "0")
-  const month = String(date.getMonth() + 1).padStart(2, "0")
-  const year = date.getFullYear()
-  return `${day}.${month}.${year}`
+  return `${date.getDate()} ${MONTHS_KK[date.getMonth()]} ${date.getFullYear()}`
+}
+
+function formatTime(dateIso: string) {
+  const date = new Date(dateIso)
+  return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`
 }
 
 export function BanketPage() {
   const event = TOI_BANKET
+  const program = event.program?.items ?? []
 
   return (
-    <PageBackground
-      src={event.backgroundImage}
-      position={event.backgroundPosition}
-      blur={false}
-      overlay="none"
-    >
-      <main className="flex min-h-dvh flex-col px-5 pb-12 pt-6" lang="kk">
+    <main className="t23" lang="kk">
+      <Link href="/" className="back-home">
+        ← Басты бет
+      </Link>
+
+      <div className="music-btn-wrap">
         <MusicButton autoPlay src={event.musicSrc} />
+      </div>
 
-        <nav aria-label={EVENT_LABELS.nav}>
-          <Link
-            href="/"
-            className="inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-[rgba(255,251,245,0.9)] px-3 py-1.5 text-sm tracking-wide text-muted-foreground backdrop-blur-md transition-colors hover:text-primary"
-          >
-            ← {EVENT_LABELS.backHome}
-          </Link>
-        </nav>
+      {/* HERO */}
+      <section className="img-block hero-light">
+        <img src="/template23/hero-couple.png" alt="" decoding="async" />
+        <div className="hero-text">
+          <div className="hero-name">{COUPLE.groom}</div>
+          <div className="hero-amp">&amp;</div>
+          <div className="hero-name">{COUPLE.bride}</div>
+        </div>
+        <div className="hero-tag">WEDDING DAY</div>
+      </section>
 
-        <FadeIn className="mt-10 text-center">
-          <div className="bet-ashar-hero bet-ashar-hero--banket relative -mx-5 w-[calc(100%+2.5rem)]">
-            <img
-              src={event.heroImage ?? "/images/bg-banket-hero.png"}
-              alt=""
-              width={527}
-              height={1024}
-              className="bet-ashar-hero__photo bet-ashar-hero__photo--couple block w-full"
-            />
-            <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-4 py-8 text-center">
-              <CoupleNamesHero groom={COUPLE.groom} bride={COUPLE.bride} withOrnament variant="overlay" />
-              <p className="bet-ashar-hero__title heading-display mt-4 font-serif text-xl tracking-[0.25em]">
-                {formatDateDots(event.date)}
-              </p>
-              <p className="bet-ashar-hero__subtitle bet-ashar-hero__subtitle--banket mt-3 font-semibold tracking-[0.12em] text-pretty">
-                {event.subtitle}
-              </p>
-              <OrnamentDivider className="mt-6" />
-            </div>
-          </div>
-        </FadeIn>
+      {/* INVITATION */}
+      <section className="section invite">
+        <div className="invite-greeting">Құрметті қонақтар!</div>
+        <div className="invite-body">{event.invitationLine ?? event.subtitle}</div>
+        <div className="invite-date">{formatInviteDate(event.date)}</div>
+        <div className="invite-time">
+          Сағат <span>{formatTime(event.date)}</span>
+        </div>
+      </section>
 
-        <FadeIn delay={160} className="mt-8">
-          <div className="soft-panel space-y-4 px-6 py-6 text-center text-sm leading-[1.85] tracking-wide text-foreground/90 text-pretty">
-            {event.description.split("\n\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
-            ))}
-          </div>
-        </FadeIn>
+      {/* CALENDAR */}
+      <section className="img-block">
+        <img src="/template23/noir-rings-2.webp" alt="" loading="lazy" decoding="async" />
+        <Template23Calendar dateIso={event.date} />
+      </section>
 
-        <FadeIn delay={100} className="mt-10">
-          <h2 className="mb-5 text-center font-serif text-xl font-medium tracking-wide text-primary">
-            {BANKET_LABELS.countdownTitle}
-          </h2>
-          <Countdown targetDate={event.date} />
-        </FadeIn>
-
-        {event.program && (
-          <FadeIn delay={120} className="mt-8">
-            <EventProgram label={event.program.label} items={event.program.items} />
-          </FadeIn>
-        )}
-
-        <FadeIn delay={130} className="mt-8">
-          <WeddingCalendar dateIso={event.date} />
-        </FadeIn>
-
-        <FadeIn delay={150} className="mt-8">
-          <section aria-label={BANKET_LABELS.venueTitle} className="soft-panel px-6 py-6 text-center">
-            <p className="section-label">{BANKET_LABELS.venueTitle}</p>
-            <div className="mt-4 flex flex-col items-center gap-2">
-              {event.venue && (
-                <p className="font-serif text-lg font-medium tracking-wide text-primary">{event.venue}</p>
-              )}
-              <p className="flex items-start justify-center gap-2 text-sm tracking-wide text-muted-foreground">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
-                <span>{event.address}</span>
-              </p>
-              <a
-                href={event.mapUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-wedding-outline mt-4 w-full"
-              >
-                {EVENT_LABELS.buildRoute}
-              </a>
-            </div>
-          </section>
-        </FadeIn>
-
-        {event.hosts && (
-          <FadeIn delay={120} className="mt-6">
-            <section aria-label={event.hosts.label} className="soft-panel px-6 py-5 text-center">
-              <p className="section-label">{event.hosts.label}</p>
-              <div className="mt-4 flex flex-col gap-2">
-                {event.hosts.names.map((name) => (
-                  <p key={name} className="font-serif text-lg font-medium tracking-wide text-primary">
-                    {name}
-                  </p>
-                ))}
+      {/* TIMING */}
+      {program.length > 0 && (
+        <section className="timing">
+          <img
+            className="timing-curve"
+            src="/template23/heart-curve.webp"
+            alt=""
+            aria-hidden
+          />
+          {program.slice(0, 3).map((item, index) => (
+            <div key={`${item.time}-${item.title}`} className={`timing-stop s${index + 1}`}>
+              <div>
+                <div className="timing-time">{item.time}</div>
+                <div className="timing-label">{item.title}</div>
               </div>
-            </section>
-          </FadeIn>
-        )}
+            </div>
+          ))}
+        </section>
+      )}
 
-        <FadeIn delay={100} className="mt-10">
-          <h2 className="mb-2 text-center font-serif text-xl font-medium tracking-wide text-primary">
-            {BANKET_LABELS.surveyTitle}
-          </h2>
-          <p className="mb-5 text-center text-xs tracking-wide text-muted-foreground text-pretty">
-            {BANKET_LABELS.nameHint}
-          </p>
-          <RsvpForm eventTitle={event.title} rsvpSheetId={event.rsvpSheetId} />
-        </FadeIn>
+      {/* COUNTDOWN */}
+      <section className="img-block">
+        <img src="/template23/countdown-couple.png" alt="" loading="lazy" decoding="async" />
+        <div className="count-overlay">
+          <div className="count-title">ТОЙҒА ДЕЙІН:</div>
+          <Template23Countdown targetDate={event.date} />
+        </div>
+      </section>
 
-        <FadeIn className="mt-14">
-          <footer className="text-center">
-            <OrnamentDivider className="mb-5" />
-            <p className="font-serif text-lg font-medium tracking-wide text-primary">
-              {BANKET_LABELS.footerGuest}
-            </p>
-            <p className="mt-3 font-serif text-base tracking-wide text-muted-foreground">
-              {EVENT_LABELS.footerLove}, {COUPLE.groom} & {COUPLE.bride}
-            </p>
-            <p className="mt-2 text-xs tracking-[0.2em] text-muted-foreground">{COUPLE.footerDate}</p>
-          </footer>
-        </FadeIn>
-      </main>
-    </PageBackground>
+      {/* LOCATION */}
+      <section className="section loc">
+        <div className="loc-title">Мекен-жай</div>
+        <div className="loc-sub">Той орны</div>
+        <div className="loc-addr">
+          <div>{event.address}</div>
+          {event.venue && <div className="accent-italic">«{event.venue}»</div>}
+        </div>
+        <div className="loc-photo">
+          <img
+            src="/template23/noir-rings-palace.webp"
+            alt={event.venue ?? "Той орны"}
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div>
+          <a className="map-btn" href={event.mapUrl} target="_blank" rel="noopener noreferrer">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden
+            >
+              <path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <span>Картадан ашу</span>
+          </a>
+        </div>
+      </section>
+
+      {/* HOSTS */}
+      {event.hosts && (
+        <section className="section hosts">
+          <div className="hosts-label">{event.hosts.label}:</div>
+          {event.hosts.names.map((name) => (
+            <div key={name} className="hosts-name">
+              {name}
+            </div>
+          ))}
+          <div className="hosts-note">Сіздерді тойымызда күтеміз!</div>
+        </section>
+      )}
+
+      {/* RSVP */}
+      <section className="section rsvp-section">
+        <Template23Rsvp eventTitle={event.title} rsvpSheetId={event.rsvpSheetId} />
+      </section>
+
+      {/* WISHES */}
+      <section className="section wishes">
+        <div className="wishes-title">Тілектер</div>
+        <div className="wishes-text">Жас жұбайларға тілек қалдырыңыз.</div>
+        <button className="wishes-btn" type="button" onClick={scrollToRsvpWish}>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.7"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden
+          >
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <polyline points="3 7 12 13 21 7" />
+          </svg>
+          <span>Тілек қалдыру</span>
+        </button>
+      </section>
+    </main>
   )
 }

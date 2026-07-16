@@ -1,14 +1,21 @@
 "use client"
 
-import { useState } from "react"
+import { useState, type ReactNode } from "react"
 import Link from "next/link"
 import { CalendarDays, ChevronRight, MapPin } from "lucide-react"
-import { BET_ASHAR, COUPLE, HOME_BACKGROUND, TOI_BANKET, type WeddingEvent } from "@/lib/wedding-config"
+import { COUPLE, TOI_BANKET, type WeddingEvent } from "@/lib/wedding-config"
 import { FadeIn } from "@/components/fade-in"
-import { MusicButton } from "@/components/music-button"
-import { PageBackground } from "@/components/page-background"
 import { CoupleNamesHero } from "@/components/couple-names-hero"
 import { OrnamentDivider } from "@/components/ornament-divider"
+
+function SoftHomeBackground({ children }: { children: ReactNode }) {
+  return (
+    <div className="home-soft-bg relative min-h-dvh">
+      <div aria-hidden className="home-soft-bg__glow" />
+      <div className="relative z-10">{children}</div>
+    </div>
+  )
+}
 
 function EventLinkCard({ event }: { event: WeddingEvent }) {
   return (
@@ -17,9 +24,7 @@ function EventLinkCard({ event }: { event: WeddingEvent }) {
       className="group soft-panel flex items-center gap-4 p-5 transition-all hover:border-accent/30 hover:shadow-[0_8px_32px_rgba(92,24,34,0.1)]"
     >
       <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-accent/30 bg-cream/80">
-        <span className="font-serif text-lg text-primary">
-          {event.slug === "bet-ashar" ? "Б" : "Т"}
-        </span>
+        <span className="font-serif text-lg text-primary">Т</span>
       </div>
       <div className="min-w-0 flex-1">
         <h2 className="heading-display text-xl font-semibold">{event.title}</h2>
@@ -42,7 +47,7 @@ export function InvitationHome() {
 
   if (!opened) {
     return (
-      <PageBackground src={HOME_BACKGROUND} position="center center">
+      <SoftHomeBackground>
         <main className="flex min-h-dvh flex-col items-center justify-center px-8 text-center">
           <div className="soft-panel opening-card flex w-full max-w-sm flex-col items-center px-8 py-12">
             <p className="section-label">Тойға шақырту</p>
@@ -55,15 +60,13 @@ export function InvitationHome() {
             </button>
           </div>
         </main>
-      </PageBackground>
+      </SoftHomeBackground>
     )
   }
 
   return (
-    <PageBackground src={HOME_BACKGROUND} position="center center">
+    <SoftHomeBackground>
       <main className="flex min-h-dvh flex-col px-5 pb-12 pt-10 animate-in fade-in duration-700">
-        <MusicButton autoPlay />
-
         <FadeIn className="text-center">
           <p className="section-label">Құрметті қонақтар</p>
           <CoupleNamesHero groom={COUPLE.groom} bride={COUPLE.bride} nameSize="lg" />
@@ -75,11 +78,7 @@ export function InvitationHome() {
         </FadeIn>
 
         <FadeIn delay={150} className="mt-10">
-          <h2 className="mb-5 text-center font-serif text-lg font-medium tracking-wide text-primary">
-            Екі мереке — екі шақыру
-          </h2>
           <div className="flex flex-col gap-4">
-            <EventLinkCard event={BET_ASHAR} />
             <EventLinkCard event={TOI_BANKET} />
           </div>
         </FadeIn>
@@ -94,6 +93,6 @@ export function InvitationHome() {
           </footer>
         </FadeIn>
       </main>
-    </PageBackground>
+    </SoftHomeBackground>
   )
 }
