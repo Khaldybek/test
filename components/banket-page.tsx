@@ -23,11 +23,6 @@ const MONTHS_KK = [
   "Желтоқсан",
 ] as const
 
-function formatInviteDate(dateIso: string) {
-  const date = new Date(dateIso)
-  return `${date.getDate()} ${MONTHS_KK[date.getMonth()]} ${date.getFullYear()}`
-}
-
 function formatTime(dateIso: string) {
   const date = new Date(dateIso)
   return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`
@@ -36,6 +31,10 @@ function formatTime(dateIso: string) {
 export function BanketPage() {
   const event = TOI_BANKET
   const program = event.program?.items ?? []
+  const eventDate = new Date(event.date)
+  const eventDay = eventDate.getDate()
+  const eventMonth = MONTHS_KK[eventDate.getMonth()]
+  const eventYear = eventDate.getFullYear()
 
   return (
     <main className="t23" lang="kk">
@@ -62,16 +61,28 @@ export function BanketPage() {
       <section className="section invite">
         <div className="invite-greeting">Құрметті қонақтар!</div>
         <div className="invite-body">{event.invitationLine ?? event.subtitle}</div>
-        <div className="invite-date">{formatInviteDate(event.date)}</div>
-        <div className="invite-time">
-          Сағат <span>{formatTime(event.date)}</span>
-        </div>
+        {event.hosts && (
+          <div className="invite-hosts">
+            <div className="invite-hosts-label">{event.hosts.label}:</div>
+            {event.hosts.names.map((name) => (
+              <div key={name} className="invite-hosts-name">
+                {name}
+              </div>
+            ))}
+          </div>
+        )}
       </section>
 
       {/* CALENDAR */}
       <section className="img-block">
         <img src="/template23/noir-rings-2.webp" alt="" loading="lazy" decoding="async" />
         <Template23Calendar dateIso={event.date} />
+        <div className="cal-footer">
+          <div className="cal-footer-date">
+            <span className="cal-footer-day">{eventDay}</span> {eventMonth} {eventYear}
+          </div>
+          <div className="cal-footer-time">Сағат {formatTime(event.date)}</div>
+        </div>
       </section>
 
       {/* TIMING */}
@@ -106,9 +117,7 @@ export function BanketPage() {
       {/* LOCATION */}
       <section className="section loc">
         <div className="loc-title">Мекен-жай</div>
-        <div className="loc-sub">Той орны</div>
         <div className="loc-addr">
-          <div>{event.address}</div>
           {event.venue && <div className="accent-italic">«{event.venue}»</div>}
         </div>
         <div className="loc-photo">
@@ -139,19 +148,6 @@ export function BanketPage() {
           </a>
         </div>
       </section>
-
-      {/* HOSTS */}
-      {event.hosts && (
-        <section className="section hosts">
-          <div className="hosts-label">{event.hosts.label}:</div>
-          {event.hosts.names.map((name) => (
-            <div key={name} className="hosts-name">
-              {name}
-            </div>
-          ))}
-          <div className="hosts-note">Сіздерді тойымызда күтеміз!</div>
-        </section>
-      )}
 
       {/* RSVP */}
       <section className="section rsvp-section">

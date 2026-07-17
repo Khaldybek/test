@@ -193,10 +193,30 @@
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
 }
 
-.t23 .hero-light .hero-text,
+.t23 .hero-light .hero-text {
+  left: 28%;
+  color: var(--ink);
+  text-shadow:
+    0 0 2px #fff,
+    0 0 6px #fff,
+    0 1px 0 #fff,
+    1px 0 0 #fff,
+    -1px 0 0 #fff,
+    0 -1px 0 #fff,
+    1px 1px 0 #fff,
+    -1px -1px 0 #fff,
+    1px -1px 0 #fff,
+    -1px 1px 0 #fff,
+    0 2px 12px rgba(255, 255, 255, 0.95);
+}
 .t23 .hero-light .hero-tag {
   color: var(--ink);
-  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.7);
+  text-shadow:
+    0 0 4px #fff,
+    0 1px 0 #fff,
+    1px 0 0 #fff,
+    -1px 0 0 #fff,
+    0 -1px 0 #fff;
 }
 
 .t23 .section {
@@ -237,6 +257,20 @@
   color: var(--ink);
   letter-spacing: 0.18em;
 }
+.t23 .invite-hosts {
+  margin-top: 8px;
+}
+.t23 .invite-hosts-label,
+.t23 .invite-hosts-name {
+  font-family: var(--font-display);
+  font-size: 30px;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.t23 .invite-hosts-name {
+  margin-top: 4px;
+}
 
 .t23 .cal-overlay {
   position: absolute;
@@ -245,6 +279,34 @@
   top: 18%;
   padding: 0 32px;
   text-align: center;
+}
+.t23 .cal-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 8%;
+  z-index: 2;
+  text-align: center;
+  color: var(--cream);
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.55);
+  pointer-events: none;
+}
+.t23 .cal-footer-date {
+  font-family: var(--font-display);
+  font-size: 34px;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+}
+.t23 .cal-footer-day {
+  font-size: 52px;
+  letter-spacing: -0.01em;
+  vertical-align: -0.06em;
+}
+.t23 .cal-footer-time {
+  margin-top: 6px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  letter-spacing: 0.12em;
 }
 .t23 .cal-month {
   font-family: var(--font-display);
@@ -561,6 +623,9 @@
   text-transform: uppercase;
   color: var(--ink-mute);
   margin: 22px 0 10px;
+}
+.t23 .guests-wrap {
+  margin-top: 4px;
 }
 .t23 .attend-list {
   display: flex;
