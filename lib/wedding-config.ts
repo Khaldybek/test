@@ -83,7 +83,7 @@ export const TOI_BANKET: WeddingEvent = {
   program: {
     label: "Той бағдарламасы",
     items: [
-      { time: "17:00", title: "Қонақтардың жиналуы" },
+      { time: "17:00", title: "Беташар" },
       { time: "18:00", title: "Тойдың басталуы" },
       { time: "23:00", title: "Салтанатты кештің аяқталуы" },
     ],

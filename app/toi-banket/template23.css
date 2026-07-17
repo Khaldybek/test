@@ -402,25 +402,26 @@
   padding: 4px 56px 22px 0;
 }
 .t23 .timing-stop > div {
-  width: 180px;
+  width: 200px;
   max-width: 100%;
 }
 .t23 .timing-time {
   text-align: center;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 28px;
+  font-size: 38px;
   color: var(--ink);
   letter-spacing: 0.02em;
 }
 .t23 .timing-label {
   text-align: center;
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.22em;
+  font-size: 14px;
+  letter-spacing: 0.18em;
   color: var(--ink-mute);
   text-transform: uppercase;
-  margin-top: 4px;
+  margin-top: 6px;
+  line-height: 1.35;
 }
 
 .t23 .count-overlay {

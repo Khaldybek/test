@@ -23,11 +23,6 @@ const MONTHS_KK = [
   "Желтоқсан",
 ] as const
 
-function formatTime(dateIso: string) {
-  const date = new Date(dateIso)
-  return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`
-}
-
 export function BanketPage() {
   const event = TOI_BANKET
   const program = event.program?.items ?? []
@@ -81,7 +76,6 @@ export function BanketPage() {
           <div className="cal-footer-date">
             <span className="cal-footer-day">{eventDay}</span> {eventMonth} {eventYear}
           </div>
-          <div className="cal-footer-time">Сағат {formatTime(event.date)}</div>
         </div>
       </section>
 
