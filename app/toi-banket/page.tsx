@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { BanketPage } from "@/components/banket-page"
 
 export const metadata: Metadata = {
-  title: "Той банкет — Ахат & Жансая",
+  title: "Той банкет — Ахат & Жайна",
   description: "Үйлену тойына шақыру. 10 шілде 2026 ж., мейрамхана мекенжайы және қатысуды растау.",
 }
 

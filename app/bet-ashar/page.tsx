@@ -3,7 +3,7 @@ import { EventPage } from "@/components/event-page"
 import { BET_ASHAR } from "@/lib/wedding-config"
 
 export const metadata: Metadata = {
-  title: "Бет ашар — Ахат & Жансая",
+  title: "Бет ашар — Ахат & Жайна",
   description: "Беташар салтанатына шақыру. 8 шілде 2026 ж., мекенжай және қатысуды растау.",
 }
 
